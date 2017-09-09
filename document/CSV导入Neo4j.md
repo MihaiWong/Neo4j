@@ -21,23 +21,23 @@
 ### 3.1 CSV节点文件格式（1.csv）
 	字段一一对应值
 ``` json
-	id,name,description,Alias
-	1,制造企业,1111,2222
-	2,所有制,1111,2222
-	153,行业,1111,2222
-	3,国有独资企业,1111,2222
-	4,股份制企业,1111,2222
-	5,集体企业,1111,2222
-	6,私营企业,1111,2222
-	7,国外独资企业,1111,2222
-	8,装备制造,1111,2222
+id,name,description,Alias
+1,制造企业,1111,2222
+2,所有制,1111,2222
+153,行业,1111,2222
+3,国有独资企业,1111,2222
+4,股份制企业,1111,2222
+5,集体企业,1111,2222
+6,私营企业,1111,2222
+7,国外独资企业,1111,2222
+8,装备制造,1111,2222
 
 ```
 ### 3.2 Neo4j中执行以下命令
 
 ```
-	LOAD CSV WITH HEADERS  FROM "file:///1.csv" AS line  
-	MERGE (p:test{id:line.id,name:line.name,description:line.description,Alias:line.Alias})
+LOAD CSV WITH HEADERS  FROM "file:///1.csv" AS line  
+MERGE (p:test{id:line.id,name:line.name,description:line.description,Alias:line.Alias})
 
 ```
 参数说明：
@@ -53,14 +53,14 @@
 
 字段一一对应值
 ```
-	from_id,pro1,pro2,to_id
-	1,制造企业,所有制,2
-	7,制造企业,行业,153
-	2,所有制,国有独资企业,3
-	3,所有制,股份制企业,4
-	4,所有制,集体企业,5
-	5,所有制,私营企业,6
-	6,所有制,国外独资企业,7
+from_id,pro1,pro2,to_id
+1,制造企业,所有制,2
+7,制造企业,行业,153
+2,所有制,国有独资企业,3
+3,所有制,股份制企业,4
+4,所有制,集体企业,5
+5,所有制,私营企业,6
+6,所有制,国外独资企业,7
 
 ```
 
@@ -78,9 +78,9 @@
 ### 4.2 Neo4j中执行以下命令
 
 ```
-	LOAD CSV WITH HEADERS FROM "file:///2.csv" AS line  
-	match (from:test1{id:line.from_id}),(to:test1{id:line.to_id})  
-	merge (from)-[r:rel{pro1:line.pro1,pro2:line.pro2}]->(to)
+LOAD CSV WITH HEADERS FROM "file:///2.csv" AS line  
+match (from:test1{id:line.from_id}),(to:test1{id:line.to_id})  
+merge (from)-[r:rel{pro1:line.pro1,pro2:line.pro2}]->(to)
 
 ```
 参数说明：
